@@ -8,12 +8,12 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN npm run build --prod
 
 FROM nginx:alpine
 
 COPY --from=build /app/dist/app1/browser /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["nginx","-g","daemon off;"]
